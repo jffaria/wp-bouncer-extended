@@ -32,7 +32,7 @@ class WP_Bouncer_Extended {
 			return $session_ids;
 		// If we have more sessions than allowed, remove from the _tail_!
 		while(count($old_session_ids) > $num_allowed) {
-			unset($old_session_ids[$num_allowed-1]; // Remove newest session
+			unset($old_session_ids[$num_allowed-1]); // Remove newest session
 		}
 		return $old_session_ids;
 	}
