@@ -57,6 +57,12 @@ class WP_Bouncer_Extended {
 	 * @return Int
 	 */
 	public function num_sessions_allowed($num_allowed) {
+		global $current_user;
+		$enforce_on_users = array(524);
+		if( ! in_array( $current_user->ID, $enforce_on_users ) ) {
+			error_log( '[WP Bouncer Ext] Not enforcing rules on user ' . $current_user->ID );
+			return 0;
+		}
 		$num_allowed = 4;
 		error_log( '[WP Bouncer Ext] wp_bouncer_number_simultaneous_logins <- ' . $num_allowed );
 		return $num_allowed;
